@@ -1,0 +1,34 @@
+@baseUrl = http://localhost:3099/api
+@srcName = movies
+###
+# get all
+GET {{baseUrl}}/{{srcName}}?_page=1
+###
+# filter 1
+GET {{baseUrl}}/{{srcName}}?name_like=hậu duệ&_limit=2
+
+###
+# filter 2
+GET {{baseUrl}}/{{srcName}}?q=hậu duệ&_limit=1
+
+###
+# add new
+POST {{baseUrl}}/{{srcName}}
+Content-Type: application/json
+
+{
+    "displayName": "duy vu"
+  }
+###
+# update
+PATCH  {{baseUrl}}/{{srcName}}/MrSGvIa
+Content-Type: application/json
+
+{
+    "displayName": "con chim non"
+  }
+###
+# Delete
+DELETE   {{baseUrl}}/{{srcName}}/xmvK0XOYZcUF22bTcFx
+
+  
