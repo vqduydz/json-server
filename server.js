@@ -34,17 +34,17 @@ router.render = (req, res) => {
     if (req.originalMethod === 'GET' && totalCount) {
         const queryParams = querystring.parse(req._parsedOriginalUrl.query);
         const default_limit = 24;
-        const _page = Number.parseInt(queryParams._page) || 1;
-        const _limit = Number.parseInt(queryParams._limit) || default_limit;
-        const _totalRows = Number.parseInt(totalCount);
-        const _totalPages = Math.ceil(_totalRows / _limit);
+        const currentPage = Number.parseInt(queryParams._page) || 1;
+        const totalItemsPerPage = Number.parseInt(queryParams._limit) || default_limit;
+        const totalItems = Number.parseInt(totalCount);
+        const totalPages = Math.ceil(totalItems / _limit);
         const result = {
             data: res.locals.data,
             pagination: {
-                _page,
-                _limit,
-                _totalRows,
-                _totalPages,
+                totalItems: 1,
+                totalItemsPerPage: 1,
+                currentPage: 1,
+                totalPages: 1,
             },
         };
         return res.jsonp(result);
