@@ -41,10 +41,10 @@ router.render = (req, res) => {
         const result = {
             data: res.locals.data,
             pagination: {
-                totalItems: 1,
-                totalItemsPerPage: 1,
-                currentPage: 1,
-                totalPages: 1,
+                totalItems,
+                totalItemsPerPage,
+                currentPage,
+                totalPages,
             },
         };
         return res.jsonp(result);
