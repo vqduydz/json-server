@@ -35,15 +35,15 @@ router.render = (req, res) => {
         const queryParams = querystring.parse(req._parsedOriginalUrl.query);
         const default_limit = 24;
         const currentPage = Number.parseInt(queryParams._page) || 1;
-        const totalItemsPerPage = Number.parseInt(queryParams._limit) || default_limit;
+        const limitPerPage = Number.parseInt(queryParams._limit) || default_limit;
         const totalItems = Number.parseInt(totalCount);
-        const totalPages = Math.ceil(totalItems / totalItemsPerPage);
+        const totalPages = Math.ceil(totalItems / limitPerPage);
         const result = {
             data: res.locals.data,
             pagination: {
-                totalItems,
-                totalItemsPerPage,
                 currentPage,
+                totalItems,
+                limitPerPage,
                 totalPages,
             },
         };
