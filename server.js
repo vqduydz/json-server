@@ -37,7 +37,7 @@ router.render = (req, res) => {
         const currentPage = Number.parseInt(queryParams._page) || 1;
         const totalItemsPerPage = Number.parseInt(queryParams._limit) || default_limit;
         const totalItems = Number.parseInt(totalCount);
-        const totalPages = Math.ceil(totalItems / _limit);
+        const totalPages = Math.ceil(totalItems / totalItemsPerPage);
         const result = {
             data: res.locals.data,
             pagination: {
